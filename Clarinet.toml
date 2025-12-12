@@ -1,0 +1,47 @@
+[project]
+name = "clarity4-defi-lending"
+description = "A sophisticated DeFi lending protocol showcasing Clarity 4 features"
+authors = []
+telemetry = false
+cache_dir = ".cache"
+
+[contracts.lending-pool]
+path = "contracts/lending-pool.clar"
+clarity_version = 3
+
+[contracts.lending-pool-trait]
+path = "contracts/traits/lending-pool-trait.clar"
+clarity_version = 3
+
+[contracts.liquidator-trait]
+path = "contracts/traits/liquidator-trait.clar"
+clarity_version = 3
+
+[contracts.simple-liquidator]
+path = "contracts/liquidators/simple-liquidator.clar"
+clarity_version = 3
+
+[contracts.price-oracle]
+path = "contracts/oracle/price-oracle.clar"
+clarity_version = 3
+
+[contracts.passkey-signer]
+path = "contracts/auth/passkey-signer.clar"
+clarity_version = 3
+
+[contracts.protocol-governance]
+path = "contracts/governance/protocol-governance.clar"
+clarity_version = 3
+
+[contracts.math-helpers]
+path = "contracts/utils/math-helpers.clar"
+clarity_version = 3
+
+[repl.analysis]
+passes = ["check_checker"]
+
+[[repl.analysis.check_checker]]
+strict = false
+trusted_sender = false
+trusted_caller = false
+callee_filter = false
