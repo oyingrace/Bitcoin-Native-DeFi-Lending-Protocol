@@ -1,41 +1,53 @@
+# Bitcoin-Native DeFi Lending Protocol
+# Built with Clarity 4 (SIP-033 & SIP-034)
+# 
+# CLARITY VERSION INFO:
+# - This project uses Clarity 4 features introduced in SIP-033
+# - In Clarinet, Clarity 4 is specified as clarity_version = 3
+# - Features used: contract-hash?, restrict-assets?, stacks-block-time, 
+#                  to-ascii?, secp256r1-verify, and SIP-034 tenure extensions
+
 [project]
 name = "clarity4-defi-lending"
 description = "A sophisticated DeFi lending protocol showcasing Clarity 4 features"
-authors = []
+authors = ["Bitcoin DeFi Developers"]
 telemetry = false
 cache_dir = ".cache"
 
+# Note: clarity_version = 3 enables all Clarity 4 (SIP-033) features
+# Including: contract-hash?, restrict-assets?, stacks-block-time, to-ascii?, secp256r1-verify
+
 [contracts.lending-pool]
 path = "contracts/lending-pool.clar"
-clarity_version = 3
+clarity_version = 3  # Clarity 4 (SIP-033)
 
 [contracts.lending-pool-trait]
 path = "contracts/traits/lending-pool-trait.clar"
-clarity_version = 3
+clarity_version = 3  # Clarity 4 (SIP-033)
 
 [contracts.liquidator-trait]
 path = "contracts/traits/liquidator-trait.clar"
-clarity_version = 3
+clarity_version = 3  # Clarity 4 (SIP-033)
 
 [contracts.simple-liquidator]
 path = "contracts/liquidators/simple-liquidator.clar"
-clarity_version = 3
+clarity_version = 3  # Clarity 4 (SIP-033)
 
 [contracts.price-oracle]
 path = "contracts/oracle/price-oracle.clar"
-clarity_version = 3
+clarity_version = 3  # Clarity 4 (SIP-033)
 
 [contracts.passkey-signer]
 path = "contracts/auth/passkey-signer.clar"
-clarity_version = 3
+clarity_version = 3  # Clarity 4 (SIP-033)
 
 [contracts.protocol-governance]
 path = "contracts/governance/protocol-governance.clar"
-clarity_version = 3
+clarity_version = 3  # Clarity 4 (SIP-033)
 
 [contracts.math-helpers]
 path = "contracts/utils/math-helpers.clar"
-clarity_version = 3
+clarity_version = 3  # Clarity 4 (SIP-033)
 
 [repl.analysis]
 passes = ["check_checker"]
