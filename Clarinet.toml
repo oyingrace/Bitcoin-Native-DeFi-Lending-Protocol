@@ -3,7 +3,7 @@
 # 
 # CLARITY VERSION INFO:
 # - This project uses Clarity 4 features introduced in SIP-033
-# - In Clarinet, Clarity 4 is specified as clarity_version = 3
+# - In Clarinet, Clarity 4 is specified as clarity_version = 4
 # - Features used: contract-hash?, restrict-assets?, stacks-block-time, 
 #                  to-ascii?, secp256r1-verify, and SIP-034 tenure extensions
 
@@ -14,46 +14,60 @@ authors = ["Bitcoin DeFi Developers"]
 telemetry = false
 cache_dir = ".cache"
 
-# Note: clarity_version = 3 enables all Clarity 4 (SIP-033) features
+# Note: clarity_version = 4 enables all Clarity 4 (SIP-033) features
 # Including: contract-hash?, restrict-assets?, stacks-block-time, to-ascii?, secp256r1-verify
 
 [contracts.lending-pool]
 path = "contracts/lending-pool.clar"
-clarity_version = 3  # Clarity 4 (SIP-033)
+clarity_version = 4  # Clarity 4 (SIP-033)
+epoch = "3.3"
 
 [contracts.lending-pool-trait]
 path = "contracts/traits/lending-pool-trait.clar"
-clarity_version = 3  # Clarity 4 (SIP-033)
+clarity_version = 4  # Clarity 4 (SIP-033)
+epoch = "3.3"
 
 [contracts.liquidator-trait]
 path = "contracts/traits/liquidator-trait.clar"
-clarity_version = 3  # Clarity 4 (SIP-033)
+clarity_version = 4  # Clarity 4 (SIP-033)
+epoch = "3.3"
 
 [contracts.simple-liquidator]
 path = "contracts/liquidators/simple-liquidator.clar"
-clarity_version = 3  # Clarity 4 (SIP-033)
+clarity_version = 4  # Clarity 4 (SIP-033)
+epoch = "3.3"
 
 [contracts.price-oracle]
 path = "contracts/oracle/price-oracle.clar"
-clarity_version = 3  # Clarity 4 (SIP-033)
+clarity_version = 4  # Clarity 4 (SIP-033)
+epoch = "3.3"
 
 [contracts.passkey-signer]
 path = "contracts/auth/passkey-signer.clar"
-clarity_version = 3  # Clarity 4 (SIP-033)
+clarity_version = 4  # Clarity 4 (SIP-033)
+epoch = "3.3"
 
 [contracts.protocol-governance]
 path = "contracts/governance/protocol-governance.clar"
-clarity_version = 3  # Clarity 4 (SIP-033)
+clarity_version = 4  # Clarity 4 (SIP-033)
+epoch = "3.3"
 
 [contracts.math-helpers]
 path = "contracts/utils/math-helpers.clar"
-clarity_version = 3  # Clarity 4 (SIP-033)
+clarity_version = 4  # Clarity 4 (SIP-033)
+epoch = "3.3"
 
 [repl.analysis]
-passes = ["check_checker"]
+passes = ['check_checker']
 
-[[repl.analysis.check_checker]]
+[repl.analysis.lints]
+
+[repl.analysis.check_checker]
 strict = false
 trusted_sender = false
 trusted_caller = false
 callee_filter = false
+
+[repl.remote_data]
+enabled = false
+api_url = 'https://api.hiro.so'
