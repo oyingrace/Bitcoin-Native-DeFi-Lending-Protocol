@@ -83,9 +83,11 @@
         price-data
             (let (
                 ;; CLARITY 4: Convert price to ASCII string
-                (price-str "PRICE_ASCII_PLACEHOLDER")
+                (price-val (get price price-data))
+                (timestamp-val (get last-updated price-data))
+                (price-str (unwrap! (to-ascii? price-val) "0"))
                 ;; CLARITY 4: Convert timestamp to ASCII string
-                (time-str "TIME_ASCII_PLACEHOLDER")
+                (time-str (unwrap! (to-ascii? timestamp-val) "0"))
             )
                 (ok {
                     asset: asset,
@@ -106,6 +108,7 @@
     (source (string-ascii 50)))
     (begin
         (asserts! (is-eq tx-sender (var-get admin)) err-owner-only)
+        (asserts! (> new-price u0) err-invalid-asset)
         
         ;; CLARITY 4: Use stacks-block-time for precise timestamp
         (map-set prices
@@ -117,7 +120,7 @@
             }
         )
         
-        ;; Store in history
+        ;; Store in history (using block-height as key for historical lookup)
         (map-set price-history
             { asset: asset, block-height: stacks-block-height }
             { price: new-price, timestamp: stacks-block-time }
