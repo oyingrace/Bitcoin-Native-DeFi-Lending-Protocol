@@ -158,11 +158,18 @@
     (match (map-get? user-loans { user: user })
         loan-data (let (
                 ;; CLARITY 4: Use stacks-block-time for precise time-based calculations
-                (time-elapsed (- stacks-block-time (get last-interest-update loan-data)))
+                (last-update (get last-interest-update loan-data))
+                (time-elapsed (if (> stacks-block-time last-update)
+                    (- stacks-block-time last-update)
+                    u0
+                ))
                 (principal-amt (get principal-amount loan-data))
                 ;; Calculate interest: (principal * rate * time) / (seconds-per-year * 10000)
-                (new-interest (/ (* (* principal-amt INTEREST-RATE-BPS) time-elapsed)
-                    u315360000000
+                (new-interest (if (> time-elapsed u0)
+                    (/ (* (* principal-amt INTEREST-RATE-BPS) time-elapsed)
+                        u315360000000
+                    )
+                    u0
                 ))
             )
             (ok (+ (get interest-accrued loan-data) new-interest))
@@ -289,7 +296,10 @@
                 (unwrap-panic (calculate-current-interest borrower))
             ))
             (collateral-value (get amount collateral-data))
-            (health-factor (/ (* collateral-value u100) total-debt))
+            (health-factor (if (is-eq total-debt u0)
+                u0
+                (/ (* collateral-value u100) total-debt)
+            ))
             (liquidation-amount (+ total-debt (/ (* total-debt LIQUIDATION-BONUS) u100)))
         )
         (asserts! (not (var-get protocol-paused)) err-paused)
