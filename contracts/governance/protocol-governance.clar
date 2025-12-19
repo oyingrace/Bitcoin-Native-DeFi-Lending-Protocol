@@ -75,7 +75,10 @@
         ;; CLARITY 4: Verify target contract if provided
         (let ((contract-hash (match target-contract
                 contract
-                (some 0x00) ;; Mock hash
+                (match (contract-hash? contract)
+                    hash-value (some hash-value)
+                    none
+                )
                 none
             )))
             ;; Create proposal with stacks-block-time based execution delay
@@ -192,8 +195,11 @@
             (match (get target-contract proposal)
                 target (match (get new-contract-hash proposal)
                     expected-hash
-                    ;; Mock contract-hash? check
-                    (asserts! (is-eq expected-hash 0x00) err-invalid-contract-hash)
+                        (match (contract-hash? target)
+                            current-hash
+                                (asserts! (is-eq current-hash expected-hash) err-invalid-contract-hash)
+                            (asserts! false err-invalid-contract-hash)
+                        )
                     true
                 )
                 true
