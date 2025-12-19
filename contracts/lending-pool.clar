@@ -201,12 +201,18 @@
         )
 
         ;; CLARITY 4: Create/update loan with stacks-block-time timestamp
-        (map-set user-loans { user: tx-sender } {
-            principal-amount: (+ current-debt amount),
-            interest-accrued: u0,
-            borrow-time: stacks-block-time,
-            last-interest-update: stacks-block-time,
-        })
+        ;; If existing loan, preserve original borrow-time, otherwise use current time
+        (let ((original-borrow-time (match existing-loan
+                loan (get borrow-time loan)
+                stacks-block-time
+            )))
+            (map-set user-loans { user: tx-sender } {
+                principal-amount: (+ current-debt amount),
+                interest-accrued: u0, ;; Interest is now part of principal
+                borrow-time: original-borrow-time,
+                last-interest-update: stacks-block-time,
+            })
+        )
 
         ;; Transfer borrowed amount from contract
         (try! (stx-transfer? amount CONTRACT-ADDRESS recipient))
