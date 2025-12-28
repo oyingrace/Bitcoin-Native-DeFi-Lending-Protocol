@@ -227,9 +227,18 @@
                     (- (get execution-time proposal) stacks-block-time)
                     u0
                 ))
-                (votes-for-ascii (unwrap! (to-ascii? votes-for-val) "0"))
-                (votes-against-ascii (unwrap! (to-ascii? votes-against-val) "0"))
-                (time-left-ascii (unwrap! (to-ascii? time-left) "0"))
+                (votes-for-ascii (match (to-ascii? votes-for-val)
+                    ok-val ok-val
+                    err "0"
+                ))
+                (votes-against-ascii (match (to-ascii? votes-against-val)
+                    ok-val ok-val
+                    err "0"
+                ))
+                (time-left-ascii (match (to-ascii? time-left)
+                    ok-val ok-val
+                    err "0"
+                ))
                 (status (if (get executed proposal)
                     "EXECUTED"
                     (if (get cancelled proposal)
