@@ -381,9 +381,18 @@
                 (principal-amt (get principal-amount loan-data))
                 (interest-amt (unwrap-panic (calculate-current-interest user)))
                 (health (unwrap-panic (get-health-factor user)))
-                (principal-ascii (unwrap! (to-ascii? principal-amt) "0"))
-                (interest-ascii (unwrap! (to-ascii? interest-amt) "0"))
-                (health-ascii (unwrap! (to-ascii? health) "0"))
+                (principal-ascii (match (to-ascii? principal-amt)
+                    ok-val ok-val
+                    err "0"
+                ))
+                (interest-ascii (match (to-ascii? interest-amt)
+                    ok-val ok-val
+                    err "0"
+                ))
+                (health-ascii (match (to-ascii? health)
+                    ok-val ok-val
+                    err "0"
+                ))
             )
             (ok {
                 principal: principal-ascii,
