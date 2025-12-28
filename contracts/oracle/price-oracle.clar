@@ -85,9 +85,15 @@
                 ;; CLARITY 4: Convert price to ASCII string
                 (price-val (get price price-data))
                 (timestamp-val (get last-updated price-data))
-                (price-str (unwrap! (to-ascii? price-val) "0"))
+                (price-str (match (to-ascii? price-val)
+                    ok-val ok-val
+                    err "0"
+                ))
                 ;; CLARITY 4: Convert timestamp to ASCII string
-                (time-str (unwrap! (to-ascii? timestamp-val) "0"))
+                (time-str (match (to-ascii? timestamp-val)
+                    ok-val ok-val
+                    err "0"
+                ))
             )
                 (ok {
                     asset: asset,
