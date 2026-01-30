@@ -54,3 +54,11 @@
 (define-read-only (get-token-uri)
   (ok (var-get token-uri))
 )
+
+;; Mint function (only contract owner)
+(define-public (mint (amount uint) (recipient principal))
+  (begin
+    (asserts! (is-eq tx-sender CONTRACT-OWNER) ERR-UNAUTHORIZED)
+    (ft-mint? chainchat-token amount recipient)
+  )
+)
