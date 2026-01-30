@@ -46,3 +46,12 @@
   )
   (asserts! (is-eq tx-sender CONTRACT-OWNER) ERR-UNAUTHORIZED)
     (asserts! (<= amount (var-get treasury-balance)) ERR-INSUFFICIENT-FUNDS)
+
+    (try! (begin (stx-transfer? amount tx-sender recipient)))
+
+    (map-set spending-records spending-id {
+      recipient: recipient,
+      amount: amount,
+      purpose: purpose,
+      spent-at: stacks-block-time
+    })
