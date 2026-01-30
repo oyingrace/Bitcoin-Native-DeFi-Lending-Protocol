@@ -19,3 +19,5 @@
   purpose: (string-ascii 100),
   spent-at: uint  ;; Clarity 4: Unix timestamp
 })
+
+(define-data-var next-spending-id uint u1)
