@@ -70,3 +70,8 @@
     (ft-burn? chainchat-token amount owner)
   )
 )
+
+;; Delegation Functions
+
+(define-map delegations principal principal)  ;; delegator -> delegatee
+(define-map delegation-amounts principal uint)  ;; delegator -> amount delegated
