@@ -1,0 +1,20 @@
+{
+    "name": "bitcoin-native-defi-lending-protocol",
+    "version": "0.1.0",
+    "private": true,
+   
+    "dependencies": {
+      "@coinbase/wallet-sdk": "^4.3.7",
+      "@openzeppelin/contracts": "^5.4.0",
+      "@reown/appkit": "^1.8.14",
+      "@reown/appkit-adapter-wagmi": "^1.8.14",
+      "@reown/appkit-wallet-button": "^1.8.15",
+      "@reown/walletkit": "^1.4.1",
+      "@stacks/connect": "^8.2.3",
+      "@stacks/transactions": "^7.3.0",
+      "@tanstack/react-query": "^5.90.10",
+      "@walletconnect/core": "^2.23.0",
+      "@walletconnect/utils": "^2.23.0"
+    }
+  }
+  
