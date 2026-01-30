@@ -39,3 +39,8 @@
     (ok true)
   )
 )
+
+(define-public (execute-spending (recipient principal) (amount uint) (purpose (string-ascii 100)))
+  (let (
+    (spending-id (var-get next-spending-id))
+  )
