@@ -10,3 +10,6 @@
 (define-constant ERR-UNAUTHORIZED (err u4000))
 (define-constant ERR-NOT-TOKEN-OWNER (err u4001))
 (define-constant ERR-INSUFFICIENT-BALANCE (err u4002))
+
+;; Token definitions
+(define-fungible-token chainchat-token u1000000000000000)  ;; 1B tokens with 6 decimals
