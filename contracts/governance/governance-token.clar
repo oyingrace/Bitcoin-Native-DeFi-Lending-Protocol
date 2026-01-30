@@ -81,3 +81,19 @@
     (delegator-balance (ft-get-balance chainchat-token tx-sender))
   )
     (asserts! (>= delegator-balance amount) ERR-INSUFFICIENT-BALANCE)
+
+    (map-set delegations tx-sender delegatee)
+    (map-set delegation-amounts tx-sender amount)
+
+    (print {
+      event: "voting-power-delegated",
+      delegator: tx-sender,
+      delegatee: delegatee,
+      amount: amount,
+      timestamp: stacks-block-time
+    })
+
+    (ok true)
+  )
+)
+
