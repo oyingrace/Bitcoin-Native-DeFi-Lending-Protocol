@@ -55,3 +55,18 @@
       purpose: purpose,
       spent-at: stacks-block-time
     })
+
+    (var-set treasury-balance (- (var-get treasury-balance) amount))
+    (var-set total-spent (+ (var-get total-spent) amount))
+    (var-set next-spending-id (+ spending-id u1))
+
+    (print {
+      event: "treasury-spending",
+      recipient: recipient,
+      amount: amount,
+      timestamp: stacks-block-time
+    })
+
+    (ok true)
+  )
+)
