@@ -28,3 +28,14 @@
   (begin
     (try! (stx-transfer? amount tx-sender tx-sender))
     (var-set treasury-balance (+ (var-get treasury-balance) amount))
+
+    (print {
+      event: "treasury-deposit",
+      depositor: tx-sender,
+      amount: amount,
+      timestamp: stacks-block-time
+    })
+
+    (ok true)
+  )
+)
