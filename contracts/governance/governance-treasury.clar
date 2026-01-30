@@ -104,3 +104,11 @@
     (err u998)
   )
 )
+
+;; 4. Clarity 4: burn-block-height - Track treasury operations
+(define-read-only (get-treasury-timestamps)
+  (ok {
+    stacks-time: stacks-block-time,
+    burn-time: burn-block-height
+  })
+)
