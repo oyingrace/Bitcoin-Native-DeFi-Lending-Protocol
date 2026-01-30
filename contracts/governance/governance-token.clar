@@ -97,3 +97,17 @@
   )
 )
 
+(define-public (undelegate)
+  (begin
+    (map-delete delegations tx-sender)
+    (map-delete delegation-amounts tx-sender)
+
+    (print {
+      event: "voting-power-undelegated",
+      delegator: tx-sender,
+      timestamp: stacks-block-time
+    })
+
+    (ok true)
+  )
+)
