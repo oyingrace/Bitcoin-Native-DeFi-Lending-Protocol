@@ -42,3 +42,11 @@
 (define-read-only (get-decimals)
   (ok (var-get token-decimals))
 )
+
+(define-read-only (get-balance (who principal))
+  (ok (ft-get-balance chainchat-token who))
+)
+
+(define-read-only (get-total-supply)
+  (ok (ft-get-supply chainchat-token))
+)
