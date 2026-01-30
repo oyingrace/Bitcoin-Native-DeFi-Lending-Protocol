@@ -13,3 +13,9 @@
 
 ;; Token definitions
 (define-fungible-token chainchat-token u1000000000000000)  ;; 1B tokens with 6 decimals
+
+;; Data Variables
+(define-data-var token-name (string-ascii 32) "ChainChat")
+(define-data-var token-symbol (string-ascii 10) "CHAT")
+(define-data-var token-uri (optional (string-utf8 256)) none)
+(define-data-var token-decimals uint u6)
