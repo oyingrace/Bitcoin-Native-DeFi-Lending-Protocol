@@ -62,3 +62,11 @@
     (ft-mint? chainchat-token amount recipient)
   )
 )
+
+;; Burn function
+(define-public (burn (amount uint) (owner principal))
+  (begin
+    (asserts! (or (is-eq tx-sender owner) (is-eq tx-sender CONTRACT-OWNER)) ERR-NOT-TOKEN-OWNER)
+    (ft-burn? chainchat-token amount owner)
+  )
+)
