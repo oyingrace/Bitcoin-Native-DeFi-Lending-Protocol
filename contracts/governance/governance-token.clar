@@ -34,3 +34,11 @@
 (define-read-only (get-name)
   (ok (var-get token-name))
 )
+
+(define-read-only (get-symbol)
+  (ok (var-get token-symbol))
+)
+
+(define-read-only (get-decimals)
+  (ok (var-get token-decimals))
+)
