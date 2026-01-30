@@ -11,3 +11,11 @@
 ;; Data Variables
 (define-data-var treasury-balance uint u0)
 (define-data-var total-spent uint u0)
+
+;; Data Maps - Using stacks-block-time for Clarity 4
+(define-map spending-records uint {
+  recipient: principal,
+  amount: uint,
+  purpose: (string-ascii 100),
+  spent-at: uint  ;; Clarity 4: Unix timestamp
+})
