@@ -96,3 +96,11 @@
 (define-read-only (format-treasury-balance)
   (ok (int-to-ascii (var-get treasury-balance)))
 )
+
+;; 3. Clarity 4: string-to-uint? - Parse spending amounts
+(define-read-only (parse-spending-amount (amount-str (string-ascii 30)))
+  (match (string-to-uint? amount-str)
+    amount (ok amount)
+    (err u998)
+  )
+)
