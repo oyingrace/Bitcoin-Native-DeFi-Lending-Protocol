@@ -91,3 +91,8 @@
 (define-read-only (validate-recipient (recipient principal))
   (principal-destruct? recipient)
 )
+
+;; 2. Clarity 4: int-to-ascii - Format treasury balances
+(define-read-only (format-treasury-balance)
+  (ok (int-to-ascii (var-get treasury-balance)))
+)
