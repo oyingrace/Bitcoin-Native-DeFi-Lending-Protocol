@@ -44,3 +44,5 @@
   (let (
     (spending-id (var-get next-spending-id))
   )
+  (asserts! (is-eq tx-sender CONTRACT-OWNER) ERR-UNAUTHORIZED)
+    (asserts! (<= amount (var-get treasury-balance)) ERR-INSUFFICIENT-FUNDS)
