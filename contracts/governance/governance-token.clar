@@ -30,3 +30,7 @@
     (ok true)
   )
 )
+
+(define-read-only (get-name)
+  (ok (var-get token-name))
+)
