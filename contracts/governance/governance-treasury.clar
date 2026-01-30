@@ -70,3 +70,9 @@
     (ok true)
   )
 )
+
+;; Read-Only Functions
+
+(define-read-only (get-treasury-balance)
+  (var-get treasury-balance)
+)
