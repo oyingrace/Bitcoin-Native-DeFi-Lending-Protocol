@@ -76,3 +76,7 @@
 (define-read-only (get-treasury-balance)
   (var-get treasury-balance)
 )
+
+(define-read-only (get-total-spent)
+  (var-get total-spent)
+)
