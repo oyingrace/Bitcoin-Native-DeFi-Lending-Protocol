@@ -80,3 +80,7 @@
 (define-read-only (get-total-spent)
   (var-get total-spent)
 )
+
+(define-read-only (get-spending-record (spending-id uint))
+  (map-get? spending-records spending-id)
+)
