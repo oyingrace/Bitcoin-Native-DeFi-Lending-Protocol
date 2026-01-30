@@ -50,3 +50,7 @@
 (define-read-only (get-total-supply)
   (ok (ft-get-supply chainchat-token))
 )
+
+(define-read-only (get-token-uri)
+  (ok (var-get token-uri))
+)
