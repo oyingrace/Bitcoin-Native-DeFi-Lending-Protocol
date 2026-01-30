@@ -84,3 +84,10 @@
 (define-read-only (get-spending-record (spending-id uint))
   (map-get? spending-records spending-id)
 )
+
+;; Clarity 4 Enhanced Functions
+
+;; 1. Clarity 4: principal-destruct? - Validate spending recipients
+(define-read-only (validate-recipient (recipient principal))
+  (principal-destruct? recipient)
+)
