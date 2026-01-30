@@ -21,3 +21,10 @@
 })
 
 (define-data-var next-spending-id uint u1)
+
+;; Public Functions
+
+(define-public (deposit-to-treasury (amount uint))
+  (begin
+    (try! (stx-transfer? amount tx-sender tx-sender))
+    (var-set treasury-balance (+ (var-get treasury-balance) amount))
