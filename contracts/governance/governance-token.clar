@@ -75,3 +75,9 @@
 
 (define-map delegations principal principal)  ;; delegator -> delegatee
 (define-map delegation-amounts principal uint)  ;; delegator -> amount delegated
+
+(define-public (delegate (delegatee principal) (amount uint))
+  (let (
+    (delegator-balance (ft-get-balance chainchat-token tx-sender))
+  )
+    (asserts! (>= delegator-balance amount) ERR-INSUFFICIENT-BALANCE)
